@@ -1,0 +1,18 @@
+{
+    "description": "A Fusion component to render flash messages in Fusion (Neos CMS, Neos CMS Backend and Neos Flow) with JavaScript",
+    "type": "neos-package",
+    "name": "neosrulez/fusion-flashmessages",
+    "require": {
+        "neos/flow": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "NeosRulez\\Fusion\\FlashMessages\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "NeosRulez.Fusion.FlashMessages"
+        }
+    }
+}

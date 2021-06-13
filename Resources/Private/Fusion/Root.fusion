@@ -1,0 +1,40 @@
+prototype(NeosRulez.Fusion.FlashMessages:Component.FlashMessages) < prototype(Neos.Fusion:Component) {
+    className = ${this.class ? this.class : 'flashmessages'}
+    ulId = ${this.id ? this.id : 'flashmessages-list'}
+
+    renderer = afx`
+        <div id={'flashmessages'}></div>
+        <script>{"
+            function getCookie(cookiename) {
+                if (typeof(cookiename) == 'string' && cookiename != '') {
+                    const cookies = document.cookie.split(';');
+                    for (i = 0; i < cookies.length; i++) {
+                        if (cookies[i].trim().startsWith(cookiename)) {
+                            return cookies[i].split('=')[1];
+                        }
+                    }
+                }
+                return null;
+            }
+            if(getCookie('Neos_Flow_FlashMessages')) {
+                var flashMessages = document.cookie.split('; ').find(row => row.startsWith('Neos_Flow_FlashMessages=')).split('=')[1];
+                const flashMessagesObj = JSON.parse(decodeURIComponent(flashMessages));
+                var flashMessagesDiv = document.getElementById('flashmessages');
+                var flashMessagesUl = document.createElement('ul');
+                flashMessagesUl.className = '" + props.className + "';
+                flashMessagesUl.setAttribute('id', '" + props.ulId + "');
+                for (var flashMessage in flashMessagesObj) {
+                    var title = flashMessagesObj[flashMessage].title.split('+').join(' ');
+                    var renderedMessage = flashMessagesObj[flashMessage].renderedMessage.split('+').join(' ');
+                    var severity = flashMessagesObj[flashMessage].severity;
+                    var flashMessagesLi = document.createElement('li');
+                    flashMessagesLi.className = 'flashmessages-' + severity.toLowerCase();
+                    flashMessagesLi.setAttribute('data-type', severity.toLowerCase());
+                    flashMessagesLi.innerHTML = '<h3>' + title + '</h3>' + renderedMessage;
+                    flashMessagesUl.appendChild(flashMessagesLi);
+                }
+                flashMessagesDiv.appendChild(flashMessagesUl);
+            }
+        "}</script>
+    `
+}

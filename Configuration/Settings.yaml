@@ -1,0 +1,11 @@
+Neos:
+  Flow:
+    mvc:
+      flashMessages:
+        containers:
+          'default':
+            storage: 'Neos\Flow\Mvc\FlashMessage\Storage\FlashMessageCookieStorage'
+  Neos:
+    fusion:
+      autoInclude:
+        NeosRulez.Fusion.FlashMessages: true
