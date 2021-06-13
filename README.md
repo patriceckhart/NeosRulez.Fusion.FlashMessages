@@ -1,4 +1,4 @@
-# Flash messages for Neos, Neos Backend and Flow
+# Fusion flash messages for Neos, Neos Backend and Flow
 
 A Fusion component to render flash messages in Fusion (Neos CMS, Neos CMS Backend and Neos Flow) with JavaScript.
 
